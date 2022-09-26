@@ -1,0 +1,19 @@
+<!--<div class="card" [ngStyle]="{'background-color': (isSelected) ? 'rgb(204, 197, 185)' : 'white' }">-->
+<div class="card" [style.background-color]="(isSelected) ? 'rgb(204, 197, 185)' : 'white'">
+
+  <div class="header">
+    <h2 class="title">{{item.from}} - {{item.to}}</h2>
+  </div>
+  <div class="content">
+    <p>Flight-No.: #{{item.id}}<span *ngIf="item.delayed"> (delayed)</span></p>
+    <p [class.delayed]="item.delayed">Date: {{item.date | date:'dd.MM.yyyy HH:mm'}}</p>
+    <p>
+      <button *ngIf="!isSelected" class="btn btn-default" (click)="select()">Add</button>
+      <button *ngIf="isSelected" class="btn btn-default" (click)="deselect()">Remove</button>
+
+      <ng-content></ng-content>
+
+      <a class="btn btn-default" (click)="edit.emit()">Edit</a>
+    </p>
+  </div>
+</div>

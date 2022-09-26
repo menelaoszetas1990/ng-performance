@@ -1,0 +1,19 @@
+<div *ngIf="errors"> {{ fieldLabel }} is invalid. </div>
+
+<div *ngIf="errors?.required"> {{ fieldLabel }} is required. </div>
+
+<div *ngIf="errors?.minlength"> {{ fieldLabel }} minlength is {{ minLength }}. </div>
+
+<div *ngIf="errors?.maxlength"> {{ fieldLabel }} maxlength is {{ maxLength }}. </div>
+
+<div *ngIf="errors?.pattern"> {{ fieldLabel }} has invalid input. </div>
+
+<div *ngIf="errors?.city"> {{ fieldLabel }} needs to be a city. </div>
+
+<div *ngIf="errors?.asyncCity"> Async: No flights found with that "{{ fieldLabel }}". </div>
+
+<div *ngIf="errors?.roundTrip"> Round trips are not allowed!</div>
+
+<div *ngIf="errors?.asyncMulti">
+  No trips were found from {{ errors.from }} to {{ errors.to }}!
+</div>

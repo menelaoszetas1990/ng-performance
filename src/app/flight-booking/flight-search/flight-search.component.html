@@ -1,0 +1,198 @@
+<div class="card">
+  <div class="header">
+    <h2 class="title">Flight Search</h2>
+  </div>
+
+  <div class="content">
+    <form #flightSearchForm="ngForm" [roundTrip]="['from','to']" [asyncMulti]="['from','to']">
+      <div class="form-group">
+        <label>From:</label>
+        <input [(ngModel)]="from"
+               [ngModelOptions]="{ updateOn: 'change' }"
+               autocomplete="false"
+               name="from"
+               class="form-control"
+               required="required"
+               [minlength]="minLength"
+               [maxlength]="maxLength"
+               [pattern]="pattern"
+               asyncCity>
+      </div>
+
+      <div *ngIf="flightSearchForm?.controls['from']?.pending">... Executing Async Validator ...</div>
+
+      <flight-validation-errors fieldLabel="From"
+                                [errors]="flightSearchForm.controls.from?.errors"
+                                [minLength]="minLength"
+                                [maxLength]="maxLength">
+      </flight-validation-errors>
+
+      <div class="form-group">
+        <label>To:</label>
+        <input [(ngModel)]="to"
+               name="to"
+               class="form-control"
+               required="required"
+               [minlength]="minLength"
+               [maxlength]="maxLength"
+               [pattern]="pattern"
+               [city]="['Graz', 'Salzburg', 'Hamburg', 'München']">
+      </div>
+
+      <div *ngIf="flightSearchForm?.controls['to']?.pending">... Executing Async Validator ...</div>
+
+      <flight-validation-errors fieldLabel="To"
+                                [errors]="flightSearchForm.controls.to?.errors"
+                                [minLength]="minLength"
+                                [maxLength]="maxLength">
+      </flight-validation-errors>
+
+      <div *ngIf="flightSearchForm?.pending">... Executing Async Multi Field Validator ...</div>
+
+      <flight-validation-errors fieldLabel="Form"
+                                [errors]="flightSearchForm?.errors">
+      </flight-validation-errors>
+
+      <div class="form-group">
+        <button
+          [disabled]="!to || !from || flightSearchForm.invalid || flightSearchForm.pending"
+          (click)="search()"
+          class="btn btn-default">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--
+<div class="card">
+<div class="content">
+<table class="table table-contensed" *ngIf="flights.length > 0">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tr *ngFor="let f of flights"
+      [class.active]="f.id === selectedFlight?.id">
+    <td>{{ f.id }}</td>
+    <td>{{ f.from | city:'short' }}</td>
+    <td>{{ f.to | city:'long' }}</td>
+    <td>{{ f.date | date:'dd.MM.yyyy HH:mm' }}</td>
+    <td>
+      <a (click)="select(f)">Select</a>
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+<div *ngIf="flights$ | async as asyncFlights" class="card">
+<div class="content">
+<table class="table table-contensed" *ngIf="asyncFlights.length > 0">
+  <thead>
+    <tr>
+      <th>Async</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tr *ngFor="let f of asyncFlights"
+      [class.active]="f.id === selectedFlight?.id">
+    <td>{{ f.id }}</td>
+    <td>{{ f.from | city:'short' }}</td>
+    <td>{{ f.to | city:'long' }}</td>
+    <td>{{ f.date | date:'dd.MM.yyyy HH:mm' }}</td>
+    <td>
+      <a (click)="select(f)">Select</a>
+    </td>
+  </tr>
+</table>
+
+<div class="card">
+<table *ngIf="flights.length > 0" class="table table-contensed">
+<thead>
+<tr>
+  <th>Id</th>
+  <th>From</th>
+  <th>To</th>
+  <th>Date</th>
+  <th></th>
+</tr>
+</thead>
+<tr *ngFor="let f of flights"
+    [class.active]="f === selectedFlight">
+  <td>{{ f.id }}</td>
+  <td>{{ f.from | city:'short' }}</td>
+  <td>{{ f.to | city:'long' }}</td>
+  <td>{{ f.date | date:'dd.MM.yyyy HH:mm' }}</td>
+  <td>
+    <a (click)="select(f)">Select</a>
+  </td>
+</tr>
+</table>
+</div>-->
+
+<div *ngIf="flights.length > 0" class="row">
+  <div *ngFor="let f of flights" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <!--<flight-card [item]="f" [isSelected]="basket[f.id]" (isSelectedChange)="basket[f.id] = $event">-->
+    <!--<flight-card [item]="f"
+                 [(isSelected)]="basket[f.id]"
+                 (isSelectedChange)="$event ? selectedFlight = f : selectedFlight = null"
+                 (edit)="flightToEdit = f">
+      <flight-status-toggle style="margin-left: 10px" [(status)]="f.delayed"></flight-status-toggle>
+    </flight-card>-->
+    <flight-card [item]="f"
+                 [(isSelected)]="basket[f.id]"
+                 (isSelectedChange)="$event ? selectedFlight = f : selectedFlight = null"
+                 (edit)="onEdit(f.id)">
+      <flight-status-toggle style="margin-left: 10px" [(status)]="f.delayed"></flight-status-toggle>
+    </flight-card>
+  </div>
+</div>
+
+<div class="card">
+  <div class="content">
+    <pre>{{ basket | json }}</pre>
+  </div>
+</div>
+
+
+<!--<div *ngIf="selectedFlight" id="selectedFlight">-->
+<!--<ng-container *ngIf="selectedFlight">
+  <div>
+    {{ message }}
+  </div>
+
+  <div class="form-group">
+    <label>Id</label>
+    <input [(ngModel)]="selectedFlight.id" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>From</label>
+    <input [(ngModel)]="selectedFlight.from" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>To</label>
+    <input [(ngModel)]="selectedFlight.to" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Date</label>
+    <input [(ngModel)]="selectedFlight.date" class="form-control">
+  </div>
+
+  <button (click)="save()" class="btn btn-default">Save</button>
+</ng-container>-->
+
+
+<!--
+<flight-edit [flight]="flightToEdit" (flightChange)="updateFlight($event)"></flight-edit>
+-->
