@@ -2,11 +2,10 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { delay } from 'rxjs/operators';
+import { debounceTime, delay, distinctUntilChanged } from 'rxjs/operators';
 
 import { FlightService } from '../shared/services/flight.service';
 import { Flight } from '../../entities/flight';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { validateCity } from '../shared/validation/city-validator';
 import { validateRoundTrip } from '../shared/validation/round-trip-validator';
 import { pattern } from '../../shared/global';

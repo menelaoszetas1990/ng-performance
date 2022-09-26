@@ -1,0 +1,14 @@
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100vh;
+}
+
+div {
+  padding-top: 50%;
+}
+
+div img {
+  max-width: 50%;
+}

@@ -4,17 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { FlightStatusToggleComponent } from './flight-status-toggle/flight-status-toggle.component';
 import { FlightValidationErrorsComponent } from './flight-validation-errors/flight-validation-errors.component';
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { ChartsComponent } from './charts/charts.component';
+import { ChartComponent } from './chart/chart.component';
+
 import { CityValidatorDirective } from './shared/validation/city-validator.directive';
 import { AsyncCityValidatorDirective } from './shared/validation/async-city-validator.directive';
 import { MultiFieldValidatorDirective } from './shared/validation/multi-field-validator.directive';
 import { AsyncMultiFieldValidatorDirective } from './shared/validation/async-multi-field-validator.directive';
-
-import { FlightEditComponent } from './flight-edit/flight-edit.component';
-import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 
@@ -25,12 +27,13 @@ import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
     FlightCardComponent,
     FlightStatusToggleComponent,
     FlightValidationErrorsComponent,
+    FlightEditComponent,
+    ChartsComponent,
+    ChartComponent,
     CityValidatorDirective,
     AsyncCityValidatorDirective,
     MultiFieldValidatorDirective,
-    AsyncMultiFieldValidatorDirective,
-    FlightEditComponent,
-    PassengerSearchComponent
+    AsyncMultiFieldValidatorDirective
   ],
   providers: [],
   exports: [FlightSearchComponent]

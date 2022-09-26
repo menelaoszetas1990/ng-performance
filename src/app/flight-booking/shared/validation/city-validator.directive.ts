@@ -13,8 +13,6 @@ export class CityValidatorDirective implements Validator {
   validate(c: AbstractControl): ValidationErrors | null {
     const value = c.value;
 
-    console.log(value);
-
     if (!c.value || !this.city.includes(value)) {
       return {
         city: {

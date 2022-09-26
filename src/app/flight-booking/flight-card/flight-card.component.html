@@ -6,14 +6,16 @@
   </div>
   <div class="content">
     <p>Flight-No.: #{{item.id}}<span *ngIf="item.delayed"> (delayed)</span></p>
-    <p [class.delayed]="item.delayed">Date: {{item.date | date:'dd.MM.yyyy HH:mm'}}</p>
+    <p [class.delayed]="item.delayed">Date: {{ getDate(item) }}</p>
     <p>
       <button *ngIf="!isSelected" class="btn btn-default" (click)="select()">Add</button>
-      <button *ngIf="isSelected" class="btn btn-default" (click)="deselect()">Remove</button>
+      <button *ngIf="isSelected" class="btn btn-default" (click)="deselect()">Rem.</button>
+
+      <a class="btn btn-default" style="margin-left: 10px" (click)="edit.emit()">Edit</a>
 
       <ng-content></ng-content>
-
-      <a class="btn btn-default" (click)="edit.emit()">Edit</a>
     </p>
   </div>
 </div>
+
+<!--{{ blink() }}-->

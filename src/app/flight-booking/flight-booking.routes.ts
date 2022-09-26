@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { FlightSearchComponent } from './flight-search/flight-search.component';
-import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
+import { ChartsComponent } from './charts/charts.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
@@ -14,7 +14,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
     component: FlightSearchComponent
   },
   {
-    path: 'passenger-search',
-    component: PassengerSearchComponent
+    path: 'charts',
+    component: ChartsComponent
   }
 ];
