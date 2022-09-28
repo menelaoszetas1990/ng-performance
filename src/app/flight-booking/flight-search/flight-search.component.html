@@ -64,12 +64,12 @@
 
 <h3 *ngIf="flights.length > 0" class="title">Flights with Subscription</h3>
 <div *ngIf="flights.length > 0" class="row">
-  <div *ngFor="let f of flights" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <div *ngFor="let f of flights; let index = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <flight-card [item]="f"
                  [(isSelected)]="basket[f.id]"
                  (isSelectedChange)="$event ? selectedFlight = f : selectedFlight = null"
                  (edit)="onEdit(f.id)">
-      <flight-status-toggle style="margin-left: 10px" [(status)]="f.delayed"></flight-status-toggle>
+      <flight-status-toggle style="margin-left: 10px" [(status)]="f.delayed" (statusChange)="onStatusChange(index, f)"></flight-status-toggle>
     </flight-card>
   </div>
 </div>

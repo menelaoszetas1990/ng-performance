@@ -8,8 +8,8 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'flight-card',
   templateUrl: './flight-card.component.html',
-  styleUrls: ['./flight-card.component.css']
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./flight-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlightCardComponent implements OnInit, OnChanges {
   debug = !environment.production;

@@ -104,8 +104,16 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
       const oldDate = new Date(oldFlight.date);
 
       // Mutable
-      oldDate.setTime(oldDate.getTime() + 15 * ONE_MINUTE);
-      oldFlight.date = oldDate.toISOString();
+      // oldDate.setTime(oldDate.getTime() + 15 * ONE_MINUTE);
+      // oldFlight.date = oldDate.toISOString();
+
+      // Immutable
+      const newDate = new Date(oldDate.getTime() + 15 * ONE_MINUTE);
+      this.flights[0] = { ...oldFlight, date: newDate.toISOString() };
     }
+  }
+
+  onStatusChange(index: number, f: Flight): void {
+    this.flights[index] = { ...f };
   }
 }
