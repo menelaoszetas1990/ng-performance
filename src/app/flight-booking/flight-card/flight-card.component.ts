@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, NgZone, OnChanges, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, NgZone, OnChanges, OnInit, Output } from '@angular/core';
 
 import * as moment from 'moment';
 
@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
   selector: 'flight-card',
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css']
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlightCardComponent implements OnInit, OnChanges {
   debug = !environment.production;
@@ -18,7 +19,7 @@ export class FlightCardComponent implements OnInit, OnChanges {
   @Output() isSelectedChange = new EventEmitter<boolean>();
   @Output() edit = new EventEmitter<void>();
 
-  // constructor(private element: ElementRef, private zone: NgZone) {}
+  constructor(private element: ElementRef, private ngZone: NgZone) {}
 
   ngOnChanges(): void {
     if (this.debug) {
@@ -58,7 +59,7 @@ export class FlightCardComponent implements OnInit, OnChanges {
     return moment(item.date).format('MM.DD.YYYY HH:mm');
   }
 
-  /*blink(): void {
+  blink(): void {
     // Dirty Hack used to visualize the change detector
     // let originalColor = this.element.nativeElement.firstChild.style.backgroundColor;
     this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
@@ -69,5 +70,5 @@ export class FlightCardComponent implements OnInit, OnChanges {
         this.element.nativeElement.firstChild.style.backgroundColor = 'white';
       }, 1000);
     });
-  }*/
+  }
 }

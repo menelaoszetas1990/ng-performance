@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { DemoDataService } from '../shared/services/demo-data.service';
 
@@ -17,7 +17,12 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   chart: anychart.charts.Pie = null;
 
-  constructor(private chartDataService: DemoDataService, private element: ElementRef, private ngZone: NgZone) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private chartDataService: DemoDataService,
+    private element: ElementRef,
+    private ngZone: NgZone
+  ) {}
 
   ngOnInit(): void {
     // Default data set mapping, hardcoded here.
@@ -25,8 +30,11 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    // this.ngZone.runOutsideAngular(() => {
     this.chart.container(this.container.nativeElement);
     this.chart.draw();
+    // this.cdr.detach();
+    // });
   }
 
   ngOnDestroy(): void {
