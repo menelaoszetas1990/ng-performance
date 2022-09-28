@@ -36,6 +36,6 @@ import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
     AsyncMultiFieldValidatorDirective
   ],
   providers: [],
-  exports: [FlightSearchComponent]
+  exports: []
 })
 export class FlightBookingModule {}
