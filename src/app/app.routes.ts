@@ -12,6 +12,10 @@ export const APP_ROUTES: Routes = [
     loadChildren: () => import('./flight-booking/flight-booking.module').then((m) => m.FlightBookingModule)
   },
   {
+    path: 'another-flight-booking',
+    loadChildren: () => import('./another-flight-booking/another-flight-booking.module').then((m) => m.AnotherFlightBookingModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

@@ -1,15 +1,15 @@
-import { AfterViewInit, Component, ElementRef, Input, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, NgZone, OnInit, ViewChild } from '@angular/core';
 
 import { DemoDataService } from '../../shared/demo-data.service';
 
 import 'anychart';
 
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  selector: 'app-another-chart',
+  templateUrl: './another-chart.component.html',
+  styleUrls: ['./another-chart.component.scss']
 })
-export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AnotherChartComponent implements OnInit, AfterViewInit {
   @Input() id = 0;
   @Input() data = 'data1';
 
@@ -27,11 +27,6 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.chart.container(this.container.nativeElement);
     this.chart.draw();
-  }
-
-  ngOnDestroy(): void {
-    this.chart.dispose();
-    this.chart = null;
   }
 
   /*blink(): void {
