@@ -108,4 +108,8 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
       oldFlight.date = oldDate.toISOString();
     }
   }
+
+  identifyFlightById(index: number, item: Flight): number {
+    return item.id;
+  }
 }
