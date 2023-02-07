@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
@@ -13,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 
 import { APP_ROUTES } from './app.routes';
+import { GlobalErrorHandler } from './shared/global-error-handler';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { APP_ROUTES } from './app.routes';
     })
   ],
   declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent],
+  providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
