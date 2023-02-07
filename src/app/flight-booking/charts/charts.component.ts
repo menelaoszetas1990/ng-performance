@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { ChartComponent } from '../chart/chart.component';
 
 @Component({
+  standalone: true,
   selector: 'app-charts',
   templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.css']
+  styleUrls: ['./charts.component.css'],
+  imports: [CommonModule, ChartComponent]
 })
 export class ChartsComponent {
   title = 'Charts';
