@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-charts',
@@ -14,12 +14,18 @@ export class ChartsComponent implements AfterViewInit {
     { id: 3, data: 'data3' }
   ];
 
-  @ViewChild('cnt', { read: ViewContainerRef }) vC!: ViewContainerRef;
+  @ViewChildren('cnt', { read: ViewContainerRef }) vCs!: QueryList<ViewContainerRef>;
 
   async ngAfterViewInit() {
     const esm = await import('../chart/chart.component');
-    const chartRef = this.vC.createComponent(esm.ChartComponent);
+    /*const chartRef = this.vCs.createComponent(esm.ChartComponent);
     chartRef.instance.id = this.charts[0].id;
-    chartRef.instance.data = this.charts[0].data;
+    chartRef.instance.data = this.charts[0].data;*/
+
+    this.vCs.map((viewContainerRef: ViewContainerRef, index: number) => {
+      const chartRef = viewContainerRef.createComponent(esm.ChartComponent);
+      chartRef.instance.id = this.charts[index].id;
+      chartRef.instance.data = this.charts[index].data;
+    });
   }
 }
