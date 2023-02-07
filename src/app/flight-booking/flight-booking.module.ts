@@ -11,7 +11,7 @@ import { FlightStatusToggleComponent } from './flight-status-toggle/flight-statu
 import { FlightValidationErrorsComponent } from './flight-validation-errors/flight-validation-errors.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { ChartsComponent } from './charts/charts.component';
-import { ChartComponent } from './chart/chart.component';
+// import { ChartComponent } from './chart/chart.component';
 
 import { CityValidatorDirective } from './shared/validation/city-validator.directive';
 import { AsyncCityValidatorDirective } from './shared/validation/async-city-validator.directive';
@@ -29,7 +29,7 @@ import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
     FlightValidationErrorsComponent,
     FlightEditComponent,
     ChartsComponent,
-    ChartComponent,
+    // ChartComponent,
     CityValidatorDirective,
     AsyncCityValidatorDirective,
     MultiFieldValidatorDirective,
