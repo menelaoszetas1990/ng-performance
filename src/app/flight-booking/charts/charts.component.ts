@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ChartsComponent {
   title = 'Charts';
-  chartsCount = 4;
+  chartsCount = 120;
   charts: { id: number; data: string }[] = [];
 
   constructor() {
