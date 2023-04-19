@@ -16,15 +16,15 @@ export class DemoDataService {
     { customName: 'Name3', customValue1: 21, customValue2: 4, customValue3: 15 }
   ];
 
-  private dataSet_: anychart.data.Set = anychart.data.set(this.data_);
-
-  private mappings_: { [key: string]: anychart.data.View } = {
-    data1: this.dataSet_.mapAs({ x: ['customName'], value: ['customValue1'] }),
-    data2: this.dataSet_.mapAs({ x: ['customName'], value: ['customValue2'] }),
-    data3: this.dataSet_.mapAs({ x: ['customName'], value: ['customValue3'] })
-  };
-
-  public getData(key: string = 'data1') {
-    return this.mappings_[key];
-  }
+  // private dataSet_: anychart.data.Set = anychart.data.set(this.data_);
+  //
+  // private mappings_: { [key: string]: anychart.data.View } = {
+  //   data1: this.dataSet_.mapAs({ x: ['customName'], value: ['customValue1'] }),
+  //   data2: this.dataSet_.mapAs({ x: ['customName'], value: ['customValue2'] }),
+  //   data3: this.dataSet_.mapAs({ x: ['customName'], value: ['customValue3'] })
+  // };
+  //
+  // public getData(key: string = 'data1') {
+  //   return this.mappings_[key];
+  // }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DemoDataService } from '../shared/services/demo-data.service';
 
-import 'anychart';
+// import 'anychart';
 
 @Component({
   standalone: true,
@@ -18,23 +18,23 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('container') container;
 
-  chart: anychart.charts.Pie = null;
+  // chart: anychart.charts.Pie = null;
 
   constructor(private chartDataService: DemoDataService, private element: ElementRef, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     // Default data set mapping, hardcoded here.
-    this.chart = anychart.pie(this.chartDataService.getData(this.data));
+    // this.chart = anychart.pie(this.chartDataService.getData(this.data));
   }
 
   ngAfterViewInit(): void {
-    this.chart.container(this.container.nativeElement);
-    this.chart.draw();
+    // this.chart.container(this.container.nativeElement);
+    // this.chart.draw();
   }
 
   ngOnDestroy(): void {
-    this.chart.dispose();
-    this.chart = null;
+    // this.chart.dispose();
+    // this.chart = null;
   }
 
   /*blink(): void {

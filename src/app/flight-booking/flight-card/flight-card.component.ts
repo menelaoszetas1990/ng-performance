@@ -1,9 +1,10 @@
 import { Component, ElementRef, EventEmitter, Input, NgZone, OnChanges, OnInit, Output } from '@angular/core';
 
-import * as moment from 'moment';
+// import * as moment from 'moment';
 
 import { Flight } from '../../entities/flight';
 import { environment } from '../../../environments/environment';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'flight-card',
@@ -55,7 +56,8 @@ export class FlightCardComponent implements OnInit, OnChanges {
   }
 
   getDate(item: Flight): string {
-    return moment(item.date).format('MM.DD.YYYY HH:mm');
+    const datePipe = new DatePipe('de-at');
+    return datePipe.transform(item.date, 'MM.DD.YYYY HH:mm');
   }
 
   /*blink(): void {
