@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 import { ChartComponent } from '../chart/chart.component';
 
@@ -8,7 +8,7 @@ import { ChartComponent } from '../chart/chart.component';
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css'],
-  imports: [CommonModule, ChartComponent]
+  imports: [NgFor, NgIf, ChartComponent]
 })
 export class ChartsComponent {
   title = 'Charts';

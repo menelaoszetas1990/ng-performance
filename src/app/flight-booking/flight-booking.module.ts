@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -21,7 +21,7 @@ import { AsyncMultiFieldValidatorDirective } from './shared/validation/async-mul
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(FLIGHT_BOOKING_ROUTES), SharedModule],
+  imports: [JsonPipe, ReactiveFormsModule, RouterModule.forChild(FLIGHT_BOOKING_ROUTES), SharedModule],
   declarations: [
     FlightSearchComponent,
     FlightCardComponent,
